@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Vue.js"></script>
+    <style>
+        body{
+            background-color: rgb(232, 14, 14);
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        #app{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="todo" placeholder="请输入内容">
+            <button @click="onadd">添加</button>
+        </div>
+        <ul>
+            <li v-for="item in list" key="item.id">
+                <input type="checkbox" name="" id="">{{item.todo}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                todo:"",
+                newid:5,
+                list:[
+                    {
+                        id:1,todo:"打台球"
+                    },
+                    {
+                        id:2,todo:"打羽毛球"
+                    },
+                    {
+                        id:3,todo:"打排球"
+                    },
+                    {
+                        id:4,todo:"打篮球"
+                    },
+                    {
+                        id:5,todo:"打网球"
+                    },
+                ]
+            },
+            methods:{
+                onadd(){
+                    this.list.unshift({id:this.newid,todo:this.todo})
+                    this.todo=""
+                }
+            }
+        })
+    </script>
+</body>
+</html>
